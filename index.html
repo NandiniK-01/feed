@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+
+<body>
+
+    <div data-role="page" id="feedback">
+        <form id="feedbackform">
+            <div class="ui-field-contain">
+                <label for="textinput-fc">Enter Name:</label>
+                <input type="text" name="textinput-fc" id="textinput-fc" placeholder="Text input" value="">
+            </div>
+            <div class="ui-field-contain">
+                <label for="textinput-fc">Enter Email:</label>
+                <input type="text" name="textinput-fc" id="textinput-fc" placeholder="Text input" value="">
+            </div>
+
+            <div class="ui-field-contain">
+                <label for="select-native-fc">Select Sem:</label>
+                <select name="select-native-fc" id="select-native-fc">
+                    <option value="small">1st</option>
+                    <option value="medium">2nd</option>
+
+                </select>
+            </div>
+
+            <div class="ui-field-contain">
+                <label for="select-native-fc">Select the subject:</label>
+                <select name="select-native-fc" id="select-native-fc">
+                    <option value="small">dsbda</option>
+                    <option value="medium">wad</option>
+                    <option value="large">cns</option>
+                </select>
+            </div>
+
+
+
+            <div class="ui-field-contain">
+                <label for="flip-6">Satisfied?
+                </label>
+                <select name="flip-6" id="flip-6" data-role="flipswitch">
+                    <option value="no">No</option>
+                    <option value="yes">Yes</option>
+                </select>
+            </div>
+            <button type="submit" data-inline="True">Submit </button>
+        </form>
+
+        <div id="feedbackResponse" style="display:none;">
+            <h2> Your Feedback : </h2>
+            <p id="responseText"></p>
+        </div>
+        <script>
+            $(document).on("pagecreate", "#feedback", function () {
+                $("#feedbackform").submit(function (event) {
+                    event.preventDefault();
+                    const response = $("#flip-6").val() === "yes" ? "Satisfied" : "Not Satisfied";
+                    $("#responseText").text(response);
+                    $("#feedbackResponse").show();
+                });
+            });
+        </script>
+
+
+    </div>
+</body>
+
+</html>
